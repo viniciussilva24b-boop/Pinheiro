@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tivo Barbearia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ECEEF1;--ink:#0F1B2D;--mute:#51607A;--panel:#14274A;--on-panel:#EDEFF4;--red:#C23B2E;--line:#C4CBD8;--card:#fff;--brass:#C9A25B;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C1626;--ink:#E8ECF3;--mute:#9AA7BF;--line:#2A3C5C;--card:#13233D}}
+:root[data-theme="dark"]{--bg:#0C1626;--ink:#E8ECF3;--mute:#9AA7BF;--line:#2A3C5C;--card:#13233D}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;margin:0;font-weight:900;line-height:.95}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:20px}
+.logo{font:900 1.9rem "Big Shoulders Display",Impact,sans-serif;text-decoration:none}
+nav{display:flex;gap:22px;font-weight:500}
+nav a{text-decoration:none;color:var(--mute)}
+nav a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1fr auto;gap:clamp(20px,6vw,80px);align-items:center;padding-top:36px;padding-bottom:72px}
+.hero h1{font-size:clamp(6.5rem,25vw,15.5rem);letter-spacing:-.02em;line-height:.8}
+.hero p{max-width:30ch;font-size:1.3rem;margin:22px 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:14px 26px;border-radius:999px;font:600 1rem Figtree,sans-serif;text-decoration:none;border:2px solid var(--ink);background:none;color:var(--ink);cursor:pointer}
+.btn.main{background:var(--red);border-color:var(--red);color:#fff}
+.btn:hover{transform:translateY(-2px)}
+.pole{position:relative;width:clamp(58px,13vw,92px);height:clamp(300px,58vh,480px);border-radius:46px;overflow:hidden;border:5px solid var(--card);box-shadow:0 0 0 2px var(--line)}
+.pole i{position:absolute;inset:-60%;background:repeating-linear-gradient(180deg,var(--red) 0 24px,#fff 24px 48px,#1E3A73 48px 72px);transform:rotate(-35deg);animation:spin 2.4s linear infinite}
+.pole::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.35),rgba(255,255,255,.4) 28%,rgba(255,255,255,0) 55%,rgba(0,0,0,.32))}
+@keyframes spin{to{transform:rotate(-35deg) translateY(72px)}}
+@media (prefers-reduced-motion:reduce){.pole i{animation:none}.btn:hover{transform:none}html{scroll-behavior:auto}}
+section{padding:80px 0}
+h2{font-size:clamp(2.8rem,8vw,4.6rem)}
+.panel{background:var(--panel);color:var(--on-panel)}
+.panel .sub{color:#B7C2D9}
+.sub{color:var(--mute);max-width:46ch;margin:14px 0 0}
+.menu{list-style:none;margin:40px 0 0;padding:0;max-width:720px}
+.menu li{display:flex;align-items:baseline;gap:12px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.menu b{font:700 1.5rem "Big Shoulders Display",Impact,sans-serif;letter-spacing:.01em}
+.menu small{color:#B7C2D9}
+.menu .dots{flex:1;border-bottom:2px dotted rgba(255,255,255,.3);transform:translateY(-5px)}
+.menu .price{font:900 1.7rem "Big Shoulders Display",Impact,sans-serif;color:var(--brass)}
+.team{display:grid;grid-template-columns:repeat(3,1fr);margin-top:40px}
+.team div{padding:6px 28px;border-left:2px solid var(--line)}
+.team div:first-child{padding-left:0;border-left:0}
+.team h3{font-size:2.6rem}
+.team span{display:block;color:var(--red);font-weight:600;margin:6px 0 10px}
+.team p{margin:0;color:var(--mute)}
+.book{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
+.hours{list-style:none;padding:0;margin:28px 0 0}
+.hours li{display:flex;justify-content:space-between;max-width:340px;padding:10px 0;border-bottom:1px solid var(--line)}
+.hours li:last-child{color:var(--mute)}
+form{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;display:grid;gap:18px}
+label,legend{font-weight:600;font-size:.95rem}
+input,select{width:100%;margin-top:6px;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:inherit}
+fieldset{border:0;padding:0;margin:0}
+.slots{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.slots label{font-weight:500}
+.slots input{position:absolute;opacity:0;width:0;height:0}
+.slots span{display:inline-block;padding:9px 16px;border:1.5px solid var(--line);border-radius:999px;cursor:pointer}
+.slots input:checked+span{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.slots input:focus-visible+span{outline:3px solid var(--red);outline-offset:2px}
+#ok{margin:0;padding:14px 16px;border-radius:12px;background:rgba(194,59,46,.12);font-weight:500}
+#ok:empty{display:none}
+footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--mute)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+@media (max-width:760px){
+nav{gap:14px;font-size:.95rem}
+.hero{padding-bottom:48px}.hero p{font-size:1.1rem}
+.team{grid-template-columns:1fr;gap:26px}.team div,.team div:first-child{border-left:0;padding:0 0 22px;border-bottom:1px solid var(--line)}
+.book{grid-template-columns:1fr;gap:36px}
+section{padding:56px 0}
+.menu small{display:none}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#">Tivo</a><nav aria-label="Principal"><a href="#servicos">Serviços</a><a href="#equipe">Equipe</a><a href="#agendar">Agendar</a></nav></div></header>
+
+<main>
+<div class="wrap hero">
+  <div>
+    <h1>Tivo</h1>
+    <p>Barbearia de bairro. Corte preciso, barba bem feita e hora marcada que se cumpre.</p>
+    <div class="btns"><a class="btn main" href="#agendar">Agendar horário</a><a class="btn" href="#servicos">Ver preços</a></div>
+  </div>
+  <div class="pole" role="img" aria-label="Poste de barbeiro girando"><i></i></div>
+</div>
+
+<section id="servicos" class="panel">
+  <div class="wrap">
+    <h2>Serviços e preços</h2>
+    <p class="sub">Toalha quente e acabamento com navalha em todos os cortes.</p>
+    <ul class="menu">
+      <li><b>Corte clássico</b><small>40 min</small><span class="dots"></span><span class="price">R$ 60</span></li>
+      <li><b>Degradê</b><small>50 min</small><span class="dots"></span><span class="price">R$ 70</span></li>
+      <li><b>Barba com toalha quente</b><small>30 min</small><span class="dots"></span><span class="price">R$ 50</span></li>
+      <li><b>Corte + barba</b><small>75 min</small><span class="dots"></span><span class="price">R$ 100</span></li>
+      <li><b>Sobrancelha</b><small>10 min</small><span class="dots"></span><span class="price">R$ 20</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="equipe">
+  <div class="wrap">
+    <h2>Quem corta</h2>
+    <div class="team">
+      <div><h3>Tiago</h3><span>Degradê e fade</span><p>Transições limpas e linhas retas. Atende com ou sem hora marcada.</p></div>
+      <div><h3>Vitor</h3><span>Barba e navalha</span><p>Desenho da barba, toalha quente e acabamento na navalha.</p></div>
+      <div><h3>Caio</h3><span>Corte clássico</span><p>Tesoura e pente para quem prefere o corte social, sem exageros.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="agendar" style="padding-top:20px">
+  <div class="wrap book">
+    <div>
+      <h2>Agende seu horário</h2>
+      <p class="sub">Escolha o serviço, o barbeiro e um horário livre. Leva menos de um minuto.</p>
+      <ul class="hours" aria-label="Horário de funcionamento">
+        <li><span>Terça a sexta</span><span>9h às 20h</span></li>
+        <li><span>Sábado</span><span>8h às 18h</span></li>
+        <li><span>Domingo e segunda</span><span>Fechado</span></li>
+      </ul>
+    </div>
+    <form id="f">
+      <label>Nome<input id="nome" required autocomplete="given-name"></label>
+      <label>Serviço
+        <select id="serv"><option>Corte clássico</option><option>Degradê</option><option>Barba com toalha quente</option><option>Corte + barba</option><option>Sobrancelha</option></select>
+      </label>
+      <label>Barbeiro
+        <select id="bar"><option>Qualquer um</option><option>Tiago</option><option>Vitor</option><option>Caio</option></select>
+      </label>
+      <fieldset>
+        <legend>Horário de hoje</legend>
+        <div class="slots">
+          <label><input type="radio" name="h" value="09:30" required><span>09:30</span></label>
+          <label><input type="radio" name="h" value="11:00"><span>11:00</span></label>
+          <label><input type="radio" name="h" value="13:30"><span>13:30</span></label>
+          <label><input type="radio" name="h" value="15:00"><span>15:00</span></label>
+          <label><input type="radio" name="h" value="17:30"><span>17:30</span></label>
+          <label><input type="radio" name="h" value="19:00"><span>19:00</span></label>
+        </div>
+      </fieldset>
+      <button class="btn main" type="submit">Reservar horário</button>
+      <p id="ok" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>Tivo Barbearia · Rua das Palmeiras, 128 – Centro</span><span>© 2026 Tivo</span></div></footer>
+
+<script>
+document.getElementById('f').addEventListener('submit',function(e){
+  e.preventDefault();
+  var h=document.querySelector('input[name=h]:checked');
+  if(!h)return;
+  var b=document.getElementById('bar').value;
+  document.getElementById('ok').textContent='Horário reservado, '+document.getElementById('nome').value.trim()+'! '+document.getElementById('serv').value+(b==='Qualquer um'?'':' com '+b)+' às '+h.value+'.';
+});
+</script>
+</body>
+</html>
